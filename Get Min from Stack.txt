@@ -1,0 +1,51 @@
+class Solution {
+    int min=0;
+    Stack<Integer> st = new Stack<>();
+    public Solution() {}
+
+    // Add an element to the top of Stack
+    public void push(int x) {
+        if(st.isEmpty()){
+            min = x;
+        }
+        else if(min > x){
+            st.push(min);
+            min = x;
+        }
+        st.push(x);
+        // code here
+    }
+
+    // Remove the top element from the Stack
+    public void pop() {
+        if(st.isEmpty()){
+            return;
+        }
+        int temp = st.peek();
+        st.pop();
+        if(min == temp && !st.isEmpty()){
+            min = st.peek();
+            st.pop();
+        }
+        // code here
+    }
+
+    // Returns top element of the Stack
+    public int peek() {
+        if(st.isEmpty()){
+            return -1;
+        }
+        return st.peek();
+        
+        // code here
+    }
+
+    // Finds minimum element of Stack
+    public int getMin() {
+        if(st.isEmpty()){
+            return -1;
+        }
+        return min;
+        // code here
+    }
+}
