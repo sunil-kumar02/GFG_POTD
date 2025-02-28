@@ -1,0 +1,28 @@
+class Solution {
+    public int evaluate(String[] arr) {
+        int n = arr.length;
+        Stack<Integer> st = new Stack<>();
+        for(int i = 0;i<n;i++){
+           // char val = arr.charAt(i);
+            if(arr[i].equals("+") || arr[i].equals("-")|| arr[i].equals("*") 
+            || arr[i].equals("/") ){
+                int b = st.peek();
+                st.pop();
+                int a = st.peek();
+                st.pop();
+                int res=0;
+                if(arr[i].equals("+"))res = a+b;
+                else if(arr[i].equals("-"))res = a-b;
+                else if(arr[i].equals("*"))res = a*b;
+                else if(arr[i].equals("/"))res = a/b;
+                st.push(res);
+            }
+            else {
+                st.push(Integer.parseInt(arr[i]));
+            }
+        }
+        return st.peek();
+        
+        // code here
+    }
+}
